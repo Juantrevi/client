@@ -17,12 +17,16 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AppComponent,
     NavBarComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
+  
 })
+
 export class AppModule { }
