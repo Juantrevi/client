@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   //ngOnInit is used for initializations, like calling functions.
   ngOnInit(): void {
     
-    this.http.get('http://localhost:5001/api/products').subscribe({
+    this.http.get('https://localhost:5001/api/products').subscribe({
       next: (response: any) => {
         console.log(response);
       },
