@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'Hello World';
+  products: any[] = [];
   
   //Constructor is used tipically for dependency injection, like services.
   constructor(private http: HttpClient) { }
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
     
     this.http.get('https://localhost:5001/api/products').subscribe({
       next: (response: any) => {
-        console.log(response);
+        this.products = response.data;
       },
       error: (error) => {
         console.log(error);
