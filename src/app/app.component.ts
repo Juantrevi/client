@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Product } from './models/product';
+import { Pagination } from './models/pagination';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'Hello World';
-  products: any[] = [];
+  products: Product[] = [];
   
   //Constructor is used tipically for dependency injection, like services.
   constructor(private http: HttpClient) { }
@@ -18,8 +20,10 @@ export class AppComponent implements OnInit {
   //ngOnInit is used for initializations, like calling functions.
   ngOnInit(): void {
     
-    this.http.get('https://localhost:5001/api/products').subscribe({
-      next: (response: any) => {
+    //.get<Pagination<Product[]>> we are saying that we will be
+    // returning a Pagination of type Product array.
+    this.http.get<Pagination<Product[]>>('https://localhost:5001/api/products').subscribe({
+      next: response  => {
         this.products = response.data;
       },
       error: (error) => {
