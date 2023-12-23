@@ -34,7 +34,7 @@ export class ShopService {
 
   getProducts() {
     //We dont subscribe here because we want to return the observable
-    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products')
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products?pageSize=50')
   }
 
 }
