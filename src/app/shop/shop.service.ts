@@ -46,6 +46,8 @@ export class ShopService {
     }
 
     params = params.append('sort', ShopParams.sort);
+    params = params.append('pageIndex', ShopParams.pageNumber);
+    params = params.append('pageSize', ShopParams.pageSize);
     
 
     //We dont subscribe here because we want to return the observable
