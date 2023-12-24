@@ -49,12 +49,25 @@
                 </div>
             </div>
 
-            <div class="row row-cols-3 g-3">
+            <div class="row row-cols-3 g-3 mb-4">
                 <div class="col" *ngFor="let product of products">
                     <!-- [] is used to say that the component is a child of the parent component
                     and that it will be recieving data from the parent component -->
                     <app-product-item [product]="product"></app-product-item>
                 </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-4">
+                
+                <pagination 
+                    [boundaryLinks]="true" 
+                    [totalItems]="77"
+                    previousText="&lsaquo;" 
+                    nextText="&rsaquo;" 
+                    firstText="&laquo;" 
+                    lastText="&raquo;">
+ 
+                </pagination>
             </div>
         </section>
     </div>
