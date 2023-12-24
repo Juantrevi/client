@@ -4,6 +4,7 @@ import { Pagination } from '../shared/models/pagination';
 import { Product } from '../shared/models/product';
 import { Brand } from '../shared/models/brand';
 import { Type } from '../shared/models/type';
+import { ShopParams } from '../shared/models/shopParams';
 /**
  * @Injectable decorator 
  * The @Injectable decorator marks it as a service that can be injected
@@ -33,24 +34,22 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(brandId?: number, typeId?: number, sort?: string) {
+  getProducts(ShopParams: ShopParams) {
     let params = new HttpParams();
 
-    if(brandId) {
-      params = params.append('brandId', brandId.toString());
+    if(ShopParams.brandId > 0) {
+      params = params.append('brandId', ShopParams.brandId);
     }
 
-    if(typeId) {
-      params = params.append('typeId', typeId.toString());
+    if(ShopParams.typeId > 0) {
+      params = params.append('typeId', ShopParams.typeId);
     }
 
-    if(sort) {
-      params = params.append('sort', sort.toString());
-    }
+    params = params.append('sort', ShopParams.sort);
     
 
     //We dont subscribe here because we want to return the observable
-    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products?pageSize=50', {params});
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products', {params});
   }
 
   getBrands() {
