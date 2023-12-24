@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pagination } from '../shared/models/pagination';
 import { Product } from '../shared/models/product';
@@ -33,9 +33,20 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts() {
+  getProducts(brandId?: number, typeId?: number) {
+    let params = new HttpParams();
+
+    if(brandId) {
+      params = params.append('brandId', brandId.toString());
+    }
+
+    if(typeId) {
+      params = params.append('typeId', typeId.toString());
+    }
+    
+
     //We dont subscribe here because we want to return the observable
-    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products?pageSize=50')
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products?pageSize=50', {params});
   }
 
   getBrands() {
