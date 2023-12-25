@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <section class="col-3">
-
+        <!-- This is the filter section -->
+        <section class="col-3">  
             <h5 class="text-warning ms-3">Sort</h5>
             <select class="form-select mb-4" (change)="onSortSelected($event)">
                 <option *ngFor="let sort of sortOptions" [value]="sort.value">
@@ -36,6 +36,8 @@
                 </ul>
 
         </section>
+
+        <!-- This is the product section -->
         <section class="col-9">
 
             <div class="d-flex justify-content-between align-items-center pb-2">
@@ -64,7 +66,7 @@
             class="d-flex justify-content-center mb-4"
             *ngIf="totalCount > 0"
             >
-                
+                <!--This is pagination-->        
                 <pagination 
                     [boundaryLinks]="true" 
                     [totalItems]="totalCount"

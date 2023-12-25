@@ -31,6 +31,17 @@ export class ShopComponent implements OnInit {
     this.getTypes();
   }
 
+  /**
+   * Methods
+   * getProducts()
+   * getBrands()
+   * getTypes()
+   * onBrandSelected()
+   * onTypeSelected()
+   * onSortSelected()
+   * onPageChanged()
+   */
+  
   getProducts() {
     this.shopService.getProducts(this.shopParams).subscribe({
       next: Response => {

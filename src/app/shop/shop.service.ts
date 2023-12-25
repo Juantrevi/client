@@ -27,6 +27,9 @@ import { ShopParams } from '../shared/models/shopParams';
 /** 
  * Services
  * Useful to centralize http requests, authentication, logging, etc.
+ * Services are singletons, meaning that they are instantiated only once
+ * during the lifetime of the application.
+ * Services are injectable, meaning that they can be injected as a dependency
 */
 export class ShopService {
 
