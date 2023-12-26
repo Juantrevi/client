@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PagingHeaderComponent } from './paging-header/paging-header.component';
+import { PagerComponent } from './pager/pager.component';
 
 /** 
  * SharedModule
@@ -12,15 +13,22 @@ import { PagingHeaderComponent } from './paging-header/paging-header.component';
 
 @NgModule({
   declarations: [
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    PagerComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot()
   ],
+
+  /** 
+   * exports
+   * Each time we create a component, we need to add it to the exports array so that it can be used by other modules.
+   */
   exports: [
     PaginationModule,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    PagerComponent
   ]
 })
 export class SharedModule { }
